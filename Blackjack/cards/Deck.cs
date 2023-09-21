@@ -19,6 +19,7 @@ namespace Blackjack.cards {
                 for (int j = 1; j < 14; j++) {
                     Card card = new Card((CardType)i, (CardValue)j);
                     newDeck.Add(card);
+                    Console.WriteLine("---" + card.cardValue + "  " + card.getCardValue(card));
                 }
                 
             }

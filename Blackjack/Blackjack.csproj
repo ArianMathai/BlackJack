@@ -44,6 +44,7 @@
         <Compile Include="cards\CardType.cs" />
         <Compile Include="cards\CardValue.cs" />
         <Compile Include="cards\Deck.cs" />
+        <Compile Include="Participants\IParticipant.cs" />
         <Compile Include="Program.cs"/>
         <Compile Include="Properties\AssemblyInfo.cs"/>
     </ItemGroup>
