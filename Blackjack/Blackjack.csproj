@@ -44,9 +44,11 @@
         <Compile Include="cards\CardType.cs" />
         <Compile Include="cards\CardValue.cs" />
         <Compile Include="cards\Deck.cs" />
-        <Compile Include="Participants\IParticipant.cs" />
         <Compile Include="Program.cs"/>
         <Compile Include="Properties\AssemblyInfo.cs"/>
+    </ItemGroup>
+    <ItemGroup>
+      <Folder Include="Participants\" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

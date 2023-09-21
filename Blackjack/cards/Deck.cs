@@ -4,31 +4,52 @@ using System.Linq;
 
 namespace Blackjack.cards {
     public class Deck {
-        public HashSet<Card> deck;
+        public Queue<Card> deck;
+        
+        public List<Card> cardList;
 
-        public Deck() {
-            deck = initializeDeck();
+        private int _numberOfDecks;
+
+        public Deck(int numberOfDecks) {
+            _numberOfDecks = numberOfDecks;
+            InitializeDeck();
+            Shuffle(cardList);
         }
 
-        // Test test
-        public HashSet<Card> initializeDeck() {
-            HashSet<Card> newDeck = new HashSet<Card>();
+        
+        public void InitializeDeck() {
+            cardList = new List<Card>();
 
-            for (int i = 0; i < 4; i++) {
-
-                for (int j = 1; j < 14; j++) {
-                    Card card = new Card((CardType)i, (CardValue)j);
-                    newDeck.Add(card);
-                    Console.WriteLine("---" + card.cardValue + "  " + card.getCardValue(card));
-                }
+            for (int x = 0; x < _numberOfDecks; x++) {
                 
-            }
+                for (int i = 0; i < 4; i++) {
 
-            return newDeck;
+                    for (int j = 1; j < 14; j++) {
+                        Card card = new Card((CardType)i, (CardValue)j);
+                        cardList.Add(card);
+                        //Console.WriteLine("---" + card.cardValue + "  " + card.getCardValue(card));
+                    }
+                }
+            }
         }
+        
+        private static Random random = new Random();
+        public static void Shuffle<Card>( List<Card> list) {
+            
+            int n = list.Count;
+            
+            for (int i = n - 1; i > 0; i--) {
+                int j = random.Next(0, i + 1);
+                Card temp = list[i];
+                list[i] = list[j];
+                list[j] = temp;
+            }
+        }
+        
 
         public void PrintAllCards() {
-            foreach (Card card in deck) {
+            Console.WriteLine("Number of Cards: " + cardList.Count);
+            foreach (Card card in cardList) {
                 Console.WriteLine(card);
             }
         }
