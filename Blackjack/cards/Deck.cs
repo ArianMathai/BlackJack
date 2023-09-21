@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Blackjack.cards {
     public class Deck {
-        public Queue<Card> deck;
+        public Queue<Card> CardDeck;
         
         public List<Card> cardList;
 
@@ -14,6 +14,7 @@ namespace Blackjack.cards {
             _numberOfDecks = numberOfDecks;
             InitializeDeck();
             Shuffle(cardList);
+            addListToQueue();
         }
 
         
@@ -30,6 +31,14 @@ namespace Blackjack.cards {
                         //Console.WriteLine("---" + card.cardValue + "  " + card.getCardValue(card));
                     }
                 }
+            }
+        }
+
+        private void addListToQueue() {
+            CardDeck = new Queue<Card>();
+
+            foreach (Card card in cardList) {
+                CardDeck.Enqueue(card);
             }
         }
         
@@ -50,6 +59,12 @@ namespace Blackjack.cards {
         public void PrintAllCards() {
             Console.WriteLine("Number of Cards: " + cardList.Count);
             foreach (Card card in cardList) {
+                Console.WriteLine(card);
+            }
+        }
+
+        public void PrintShuffledDeck() {
+            foreach (Card card in CardDeck) {
                 Console.WriteLine(card);
             }
         }

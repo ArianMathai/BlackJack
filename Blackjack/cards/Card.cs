@@ -7,8 +7,8 @@ namespace Blackjack.cards {
         
 
         public Card(CardType type, CardValue value) {
-            this.cardValue = value;
-            this.cardType = type;
+            cardValue = value;
+            cardType = type;
         }
 
         public int getCardValue(Card card) {
