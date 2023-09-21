@@ -21,6 +21,7 @@ namespace Blackjack.cards {
             if (card.cardValue == CardValue.Jack) {
                 return 10;
             }
+            
             return (int)card.cardValue;
         }
 
