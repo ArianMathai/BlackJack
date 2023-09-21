@@ -10,6 +10,7 @@ namespace Blackjack.cards {
             deck = initializeDeck();
         }
 
+        // Test test
         public HashSet<Card> initializeDeck() {
             HashSet<Card> newDeck = new HashSet<Card>();
 
