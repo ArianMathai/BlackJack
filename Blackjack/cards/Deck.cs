@@ -66,7 +66,7 @@ namespace Blackjack.cards {
         public void PrintShuffledDeck() {
             Console.WriteLine("Number of Cards in deck: " + cardList.Count);
             foreach (Card card in CardDeck) {
-                Console.WriteLine(card);
+                PrintAllCards();
             }
         }
         

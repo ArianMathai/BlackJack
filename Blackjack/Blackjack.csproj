@@ -44,11 +44,14 @@
         <Compile Include="cards\CardType.cs" />
         <Compile Include="cards\CardValue.cs" />
         <Compile Include="cards\Deck.cs" />
+        <Compile Include="Game\GameInitializer.cs" />
+        <Compile Include="Game\GameManager.cs" />
+        <Compile Include="Game\Table.cs" />
+        <Compile Include="Participants\Dealer.cs" />
+        <Compile Include="Participants\Participant.cs" />
+        <Compile Include="Participants\Player.cs" />
         <Compile Include="Program.cs"/>
         <Compile Include="Properties\AssemblyInfo.cs"/>
-    </ItemGroup>
-    <ItemGroup>
-      <Folder Include="Participants\" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
