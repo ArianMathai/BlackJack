@@ -20,6 +20,13 @@ namespace Blackjack.Game {
             table.player.hand.Add(table.deck.CardDeck.Dequeue());
         }
 
+        public void DealerHit() {
+            int dealerHand = Calculate(table.dealer.hand);
+            if (dealerHand < 18) {
+                table.dealer.hand.Add(table.deck.CardDeck.Dequeue());
+            }
+        }
+
         public int Calculate(List<Card> hand) {
             int score = 0;
 
@@ -27,6 +34,14 @@ namespace Blackjack.Game {
                 score += card.getCardValue(card);
             }
             return score;
+        }
+
+        public void CheckForDealerBust(int score) {
+            if (score > 21) {
+                Console.WriteLine("Dealer is bust");
+                isActiveRound = false;
+                table.player.score += 1;
+            }
         }
 
         public bool CheckForBust(int roundScore) {
@@ -56,14 +71,23 @@ namespace Blackjack.Game {
             else {
                 Console.WriteLine("You lose");
             }
+            //DealerTurn();
             isActiveRound = false;
+        }
+
+        public void DealerTurn() {
+            int score = Calculate(table.dealer.hand);
+            CheckForDealerBust(score);
+            DealerHit();
+            score = Calculate(table.dealer.hand); // Find better solution for 
+            CheckForDealerBust(score);           // these two lines
         }
 
         public void Turn() {
             int roundScore = 0;
             roundScore = Calculate(table.player.hand);
             bool bust = CheckForBust(roundScore);
-
+            
             if (!bust) {
                 Console.WriteLine("Hit or stand! (h/s)");
                 bool x = true;
@@ -119,17 +143,17 @@ namespace Blackjack.Game {
             
                 while (isActiveRound) {
                     table.ShowBothHands();
-                    
                     Console.WriteLine("--------------");
                     Turn();
+                    DealerTurn();
+                    Console.WriteLine("dealer: " + Calculate(table.dealer.hand));
+                    Console.WriteLine("player: " + Calculate(table.dealer.hand));
                 }
                 ContinuePlaying();
                 Console.WriteLine("*****************");
                 Console.WriteLine("Your score: " + table.player.score);
                 Console.WriteLine("*****************");
             }
-            
         }
-        
     }
 }
