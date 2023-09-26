@@ -9,6 +9,10 @@ namespace Blackjack.Participants {
         public Dealer() {
             
         }
+
+        public void ClearDealerHand() {
+            hand.Clear();
+        }
         
     }
 }

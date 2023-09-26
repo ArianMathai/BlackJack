@@ -60,5 +60,10 @@ namespace Blackjack.Game {
             Console.WriteLine("--------------");
             ShowPlayerHand();
         }
+
+        public void ClearHands() {
+            dealer.ClearDealerHand();
+            player.ClearPlayerHand();
+        }
     }
 }
